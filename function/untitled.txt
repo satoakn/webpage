@@ -1,0 +1,3 @@
+# pip install Flask
+cd ./Documents/youtube/Flask_app/2_簡単なWebアプリ作成
+python app.py

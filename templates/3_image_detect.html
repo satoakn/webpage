@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+物体検知アプリ
+{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ulr>
+    {% for message in messages %}
+    <li><span style="color: #B22222;">{{ message }}</span></li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<br>
+
+<form action="/image_detect" method="post" enctype="multipart/form-data">
+  <input type="file" name="image" accept="image/png, image/jpeg">
+  <button type="submit">物体検知</button>
+</form>
+<br>
+
+<img src="{{ content }}" style="width: 500px;">
+<img src="{{ content2 }}" style="width: 500px;">
+
+{% endblock %}

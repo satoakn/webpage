@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+偏差値計算アプリ
+{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ulr>
+    {% for message in messages %}
+    <li><span style="color: #B22222;">{{ message }}</span></li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<br>
+
+<form method="post" action="/deviation_value">
+<table>
+    <tr>
+        <th align="right">テストの平均値 : </th>
+        <td> <input type="number" name="mu"> </td>
+    </tr>
+    <tr>
+        <th align="right">テストの標準偏差 : </th>
+        <td> <input type="number" name="sd"> </td>
+    </tr>
+    <tr>
+        <th align="right">あなたの点数 : </th>
+        <td> <input type="number" name="sample"> </td>
+    </tr>
+    <th></th>
+    <td>
+        <input type="submit">
+    </td>
+</form>
+</table>
+<br>
+
+{% if post %} 
+<h2>あなたの偏差値は {{ value }} で、上位 {{ percent }} %です。</h2>
+<img src="data:image/png;base64,{{ img }}" />
+
+<img src="data:image/png;base64,{{ img2 }}" />
+{% endif %}
+
+{% endblock %}
